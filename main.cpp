@@ -22,7 +22,10 @@ int main (int c, char** v)
 	pthread_attr_t *attr;	
 	int shr;
 	shr=1;
-	void *res;   
+	void *res;  
+	FILE *fs = fopen("home/box/main.pid","w");
+	fprintf(fs,"%d",getpid());
+	fclose(fs); 
 
 	rt = pthread_create(&mtx,NULL, mtxf,(void*)&shr);
 	if (rt != 0) perror("create mtx");
